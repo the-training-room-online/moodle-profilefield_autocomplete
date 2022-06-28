@@ -1,10 +1,8 @@
-This plugin allows you to create custom profile fields for selecting items from a predefined list with autocompletion.
+A multi-selection profile field based on modern Moodle user interface widgets.
 
-The plugin uses the native Moodle form component "autocomplete".
+Available options are listed in a drop down menu. A text box provides filtering functionality. The list in the drop-down menu updates in real time to filter out options that don't match the filter text.
 
-- Add a new profile field "Autocomplete"
-- Choose the possible options
-- Choose if the user can select multiple options
+Selected options are displayed as tags.
 
 Installation Instructions:
 1. Unzip the directory and copy inside your-moodle /user /profile /field (at the end the folder structure should look like your-moodle/user/profile/field/autocomplete)
