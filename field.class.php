@@ -80,7 +80,7 @@ class profile_field_autocomplete extends profile_field_base {
      */
     public function edit_field_add($mform) {
         $mform->addElement('autocomplete', $this->inputname, format_string($this->field->name), $this->options, [
-                'multiple' => $this->multiple
+            'multiple' => $this->multiple
         ]);
     }
 
@@ -163,14 +163,27 @@ class profile_field_autocomplete extends profile_field_base {
     /**
      * Convert external data (csv file) from value to key for processing later by edit_save_data_preprocess
      *
-     * @param string $value one of the values in menu options.
+     * @param string|array $value one of the values in menu options.
      * @return int options key for the menu
      */
     public function convert_external_data($value) {
-        if (isset($this->options[$value])) {
-            $retval = $value;
+
+        if (is_array($value)) {
+            $retval = [];
+            foreach ($value as $item) {
+                if (isset($this->options[$item])) {
+                    $retval[] = $item;
+                } else if ($itemsearch = array_search($item, $this->options)) {
+                    $retval[] = $itemsearch;
+                }
+            }
+            $retval = !empty($retval) ? $retval : false;
         } else {
-            $retval = array_search($value, $this->options);
+            if (isset($this->options[$value])) {
+                $retval = $value;
+            } else {
+                $retval = array_search($value, $this->options);
+            }
         }
 
         // If value is not found in options then return null, so that it can be handled
