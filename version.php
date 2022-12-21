@@ -25,6 +25,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version   = 2022071900;        // The current plugin version (Date: YYYYMMDDXX).
-$plugin->requires  = 2020060900;        // Requires this Moodle version.
+$plugin->version   = 2022122100;        // The current plugin version (Date: YYYYMMDDXX).
+$plugin->requires  = 2022041900;        // Requires this Moodle version.
+$plugin->supported = [400, 400];
 $plugin->component = 'profilefield_autocomplete'; // Full name of the plugin (used for diagnostics).
